@@ -1,0 +1,12 @@
+version: '3'
+services:
+    tf-object-detection:
+        build: .
+        restart: always
+        container_name: tf-object-detection-intel
+        ports:
+            - '8088:5000'
+        volumes:
+            - './volumes/models/faster_rcnn_inception_v2_coco_2018_01_28:/tensorflow/models/research/object_detection/model'
+            - './volumes/flask_app.py:/tensorflow/models/research/object_detection/flask_app.py'
+            - './volumes/index.html:/tensorflow/models/research/object_detection/index.html'
